@@ -17,6 +17,7 @@ public class Screen {
 		}
 	}
 	
+	//Renders image pixel by pixel.
 	public void render(){
 		for(int y = 0; y < height; y++){	
 			for(int x = 0; x < width; x++){
