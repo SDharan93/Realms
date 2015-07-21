@@ -1,6 +1,7 @@
 package com.shanedharan.Realms.graphics;
 
 import java.awt.image.BufferedImage;
+import java.io.File;
 import java.io.IOException;
 
 import javax.imageio.ImageIO;
@@ -8,13 +9,16 @@ import javax.imageio.ImageIO;
 public class SpriteSheet {
 
 	private String path;
-	private final int SIZE;
+	public final int SIZE;
 	public int[] pixels;
+	
+	public static SpriteSheet tiles = new SpriteSheet("/textures/spritesheet.png", 256);
 	
 	public SpriteSheet(String path, int size) {
 		this.path = path;
 		SIZE = size;
 		pixels = new int[SIZE * SIZE];
+		System.out.println("Error: " + new File("/textures/spritesheet.png").exists());
 		load();
 	}
 	
