@@ -12,6 +12,8 @@ import javax.swing.JFrame;
 
 import com.shanedharan.Realms.graphics.Screen;
 import com.shanedharan.Realms.input.Keyboard;
+import com.shanedharan.Realms.level.Level;
+import com.shanedharan.Realms.level.RandomLevel;
 
 public class Game extends Canvas implements Runnable{
 	private static final long serialVersionUID = 1L;
@@ -23,6 +25,7 @@ public class Game extends Canvas implements Runnable{
 	private Thread thread;
 	private JFrame frame;
 	private Keyboard key;
+	private Level level;
 	private boolean running = false;
 	
 	private Screen screen;
@@ -37,6 +40,7 @@ public class Game extends Canvas implements Runnable{
 		screen = new Screen(width, height);
 		frame = new JFrame();
 		key = new Keyboard();
+		level = new RandomLevel(64,64);
 		
 		addKeyListener(key);
 	}
@@ -107,7 +111,7 @@ public class Game extends Canvas implements Runnable{
 		}
 		
 		screen.clean();
-		screen.render(x,y);
+		level.render(x, y, screen);
 		
 		for(int i = 0; i < pixels.length; i++){
 			pixels[i] = screen.pixels[i];
