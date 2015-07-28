@@ -44,7 +44,10 @@ public class Screen {
 			for(int x = 0; x < tile.sprite.SIZE; x++) {
 				//X absolute value
 				int xa = x + xp;
-				if(xa < 0 || xa >= width ||  ya < 0 || ya >= width) break;
+				//to be safe, we will render one more tile to the right, left and bottom to eliminate black border.
+				if(xa < -tile.sprite.SIZE || xa >= width ||  ya < 0 || ya >= height) break;
+				//removes black border on the x.
+				if(xa < 0) xa = 0;
 				//sets the tile within the sprite size on the screen. Currently it goes for 16 pixels.
 				pixels[xa + ya * width] = tile.sprite.pixels[x+y*tile.sprite.SIZE];
 			}
