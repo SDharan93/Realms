@@ -12,12 +12,19 @@ public class Sprite {
 	//void sprite
 	public static Sprite voidSprite = new Sprite(16, 0x1B87E0);
 	
-	public static Sprite player0 = new Sprite(16, 0, 10,SpriteSheet.tiles);
-	public static Sprite player1 = new Sprite(16, 1, 10,SpriteSheet.tiles);
-	public static Sprite player2 = new Sprite(16, 0, 11,SpriteSheet.tiles);
-	public static Sprite player3 = new Sprite(16, 1, 11,SpriteSheet.tiles);
+	//creates the sprite for the whole 4 tile sprite, one for each direction
+	public static Sprite player_forward = new Sprite(32, 0, 5, SpriteSheet.tiles);
+	public static Sprite player_back = new Sprite(32, 2, 5, SpriteSheet.tiles);
+	public static Sprite player_side = new Sprite(32, 1, 5, SpriteSheet.tiles);
 	
-	public static Sprite player = new Sprite(32, 0, 5, SpriteSheet.tiles);
+	public static Sprite player_forward_1 = new Sprite(32, 0, 6, SpriteSheet.tiles);
+	public static Sprite player_forward_2 = new Sprite(32, 0, 7, SpriteSheet.tiles);
+	
+	public static Sprite player_side_1 = new Sprite(32, 1, 6, SpriteSheet.tiles);
+	public static Sprite player_side_2 = new Sprite(32, 1, 7, SpriteSheet.tiles);
+	
+	public static Sprite player_back_1 = new Sprite(32, 2, 6, SpriteSheet.tiles);
+	public static Sprite player_back_2 = new Sprite(32, 2, 7, SpriteSheet.tiles);
 	
 	public Sprite(int size, int x, int y, SpriteSheet sheet) {
 		SIZE = size;
