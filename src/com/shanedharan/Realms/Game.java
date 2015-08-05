@@ -15,13 +15,14 @@ import com.shanedharan.Realms.graphics.Screen;
 import com.shanedharan.Realms.input.Keyboard;
 import com.shanedharan.Realms.level.Level;
 import com.shanedharan.Realms.level.RandomLevel;
+import com.shanedharan.Realms.level.SpawnLevel;
 
 public class Game extends Canvas implements Runnable{
 	private static final long serialVersionUID = 1L;
 	
 	public static int width = 300;
 	public static int height = width / 16 * 9;
-	public static int scale = 3;
+	public static int scale = 4;
 	
 	private Thread thread;
 	private JFrame frame;
@@ -42,8 +43,8 @@ public class Game extends Canvas implements Runnable{
 		screen = new Screen(width, height);
 		frame = new JFrame();
 		key = new Keyboard();
-		level = new RandomLevel(64,64);
-		player = new Player(key);
+		level = new SpawnLevel("/textures/levels/level.png");
+		player = new Player(6*16, 4*16, key);
 		
 		addKeyListener(key);
 	}

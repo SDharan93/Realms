@@ -12,13 +12,13 @@ public class SpriteSheet {
 	public final int SIZE;
 	public int[] pixels;
 	
-	public static SpriteSheet tiles = new SpriteSheet("/textures/spritesheet.png", 256);
+	public static SpriteSheet tiles = new SpriteSheet("/textures/sheets/spritesheet.png", 256);
+	public static SpriteSheet spawn_level = new SpriteSheet("/textures/sheets/spawn_level.png", 48);
 	
 	public SpriteSheet(String path, int size) {
 		this.path = path;
 		SIZE = size;
 		pixels = new int[SIZE * SIZE];
-		System.out.println("Error: " + new File("/textures/spritesheet.png").exists());
 		load();
 	}
 	
