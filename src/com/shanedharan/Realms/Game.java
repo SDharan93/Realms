@@ -16,6 +16,7 @@ import com.shanedharan.Realms.input.Keyboard;
 import com.shanedharan.Realms.level.Level;
 import com.shanedharan.Realms.level.RandomLevel;
 import com.shanedharan.Realms.level.SpawnLevel;
+import com.shanedharan.Realms.level.TileCoordinate;
 
 public class Game extends Canvas implements Runnable{
 	private static final long serialVersionUID = 1L;
@@ -44,8 +45,9 @@ public class Game extends Canvas implements Runnable{
 		frame = new JFrame();
 		key = new Keyboard();
 		level = Level.spawn;
-		player = new Player(6*16, 4*16, key);
-		
+		TileCoordinate playerSpawn = new TileCoordinate(20,65);
+		player = new Player(playerSpawn.x(), playerSpawn.y(), key);
+		player.init(level);
 		addKeyListener(key);
 	}
 	

@@ -10,12 +10,20 @@ public class Mob extends Entity{
 	protected boolean moving = false;
 	
 	public void move(int xa, int ya) {
+		//if moving in x axis and y axis at the same time.
+		if(xa != 0 && ya != 0) {
+			//send separately in each axis. 
+			move(xa, 0);
+			move(0, ya);
+			return;
+		}
+		
 		if(xa > 0) dir = 1;
 		if(xa < 0) dir = 3;
 		if(ya > 0) dir = 2;
 		if(ya < 0) dir = 0;
 		
-		if(!collision()) {
+		if(!collision(xa, ya)) {
 			x += xa;
 			y += ya;
 		}
@@ -25,10 +33,18 @@ public class Mob extends Entity{
 		
 	}
 	
-	private boolean collision() {
-		return false;
+	private boolean collision(int xa, int ya) {
+		boolean solid = false;
+		
+		for(int c = 0; c < 4; c++) {
+			//divide by 16, amount of pixels per tile. Currently it is in pixel precision and not tile.
+			int xt = ((x + xa) + c % 2 * 14 - 8 ) / 16;
+			int yt = ((y + ya) + c / 2 * 12 + 3) / 16;
+			if(level.getTile(xt, yt).solid()) solid = true;
+		}		
+		return solid;
 	}
-	
+
 	public void render() {
 		
 	}
